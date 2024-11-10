@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +24,12 @@
     let bgImage;
 
     function preload() {
-      // Ensure the image file `Cemetary.jpg` is in the same folder as this HTML file.
       bgImage = loadImage('Cemetary.jpg', 
         () => console.log('Image loaded successfully'), 
-        () => console.error('Failed to load image: Check file name and location')
+        () => {
+          console.error('Failed to load image. Ensure the file is named correctly and is in the same folder.');
+          noLoop(); // Stop further draw calls if image loading fails
+        }
       );
     }
 
@@ -41,7 +42,7 @@
       if (bgImage) {
         background(bgImage);
       } else {
-        background(200); // Placeholder background
+        background(200);
         fill(0);
         textSize(32);
         textAlign(CENTER, CENTER);
