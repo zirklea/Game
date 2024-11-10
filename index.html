@@ -24,11 +24,8 @@
     let bgImage;
 
     function preload() {
-      bgImage = loadImage('Cemetary.jpg', 
-        () => console.log('Image loaded successfully'), 
-        () => {
-          console.error('Failed to load image. Ensure the file is named correctly and is in the same folder.');
-          noLoop(); // Stop further draw calls if image loading fails
+      //Loade Cemetary image
+      Cemetary = loadImage('Cemetary.jpg')
         }
       );
     }
