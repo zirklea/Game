@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P5.js Bouncing Ball Game</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    canvas {
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let ball = {
+      x: 500,
+      y: 500,
+      diameter: 50,
+      xSpeed: 4,
+      ySpeed: 3
+    };
+    let bgImage;
+
+    function preload() {
+      bgImage = loadImage('Cemetary', 
+        () => console.log('Image loaded successfully'), 
+        () => console.error('Failed to load image: Check the file name and extension')
+      );
+    }
+
+    function setup() {
+      let cnv = createCanvas(1000, 1000);
+      cnv.parent('body');
+    }
+
+    function draw() {
+      if (bgImage) {
+        background(bgImage);
+      } else {
+        background(200); // Placeholder background
+      }
+      ellipse(ball.x, ball.y, ball.diameter);
+
+      ball.x += ball.xSpeed;
+      ball.y += ball.ySpeed;
+
+      if (ball.x > width - ball.diameter / 2 || ball.x < ball.diameter / 2) {
+        ball.xSpeed *= -1;
+      }
+      if (ball.y > height - ball.diameter / 2 || ball.y < ball.diameter / 2) {
+        ball.ySpeed *= -1;
+      }
+    }
+  </script>
+</body>
+</html>
