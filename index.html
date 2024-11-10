@@ -31,8 +31,9 @@
     let bgImage;
 
     function preload() {
-      bgImage = loadImage('Cemetary.jpg', 
-        () => console.log('Image loaded successfully'), 
+      bgImage = loadImage('./Cemetary.jpg',  // Use full relative path here
+        () => console.log('Image loaded successfully'),
+        () => console.error('Failed to load image: Check the file name and extension')
       );
     }
 
